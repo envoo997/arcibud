@@ -78,10 +78,10 @@
     // Tablica linków do zdjęć
     const imageLinks = [];
     for(let i=1;i<=10;i++){
-      imageLinks.push(`https://raw.githubusercontent.com/envoo997/arcibud/main/${i}.PNG`);
+      imageLinks.push(`${i}.PNG`); // ŚCIEŻKA WZGLĘDNA
     }
     for(let i=11;i<=40;i++){
-      imageLinks.push(`https://raw.githubusercontent.com/envoo997/arcibud/main/${i}.jfif`);
+      imageLinks.push(`${i}.jfif`); // ŚCIEŻKA WZGLĘDNA
     }
 
     function createImageDiv(index) {
@@ -149,3 +149,4 @@
   </script>
 </body>
 </html>
+
