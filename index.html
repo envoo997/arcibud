@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arcibud - Usługi Remontowo-Budowlane</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- NAVBAR -->
+  <nav class="fixed top-0 w-full bg-white shadow-md z-50">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="#uslugi" class="text-lg font-semibold hover:text-blue-600 transition">Galeria</a>
+      <h1 class="text-3xl font-bold text-blue-700 tracking-wider">ARCIBUD</h1>
+      <a href="#kontakt" class="text-lg font-semibold hover:text-blue-600 transition">Kontakt</a>
+    </div>
+  </nav>
+
+  
+
+  <!-- HERO -->
+  <section class="h-screen flex flex-col justify-center items-center bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80');">
+    <div class="bg-black bg-opacity-50 p-8 rounded-lg text-center text-white" data-aos="fade-up">
+      <h2 class="text-4xl md:text-5xl font-bold mb-4">Profesjonalne wykończenia wnętrz</h2>
+      <p class="text-lg md:text-xl">Zaufaj doświadczeniu firmy Arcibud – jakość, precyzja i solidność.</p>
+    </div>
+  </section>
+
+  <!-- USŁUGI -->
+  <section id="uslugi" class="py-20 max-w-6xl mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center mb-10 text-blue-700" data-aos="fade-up">Nasze Usługi</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="p-6 bg-white rounded-xl shadow-md hover:shadow-xl transition" data-aos="fade-up"><h3 class="font-semibold text-lg mb-2">Malowanie</h3><p>Profesjonalne malowanie ścian i sufitów z dbałością o detale.</p></div>
+      <div class="p-6 bg-white rounded-xl shadow-md hover:shadow-xl transition" data-aos="fade-up"><h3 class="font-semibold text-lg mb-2">Szpachlowanie</h3><p>Gładkie, idealnie przygotowane powierzchnie pod malowanie.</p></div>
+      <div class="p-6 bg-white rounded-xl shadow-md hover:shadow-xl transition" data-aos="fade-up"><h3 class="font-semibold text-lg mb-2">Tapetowanie</h3><p>Precyzyjne nakładanie tapet i fototapet.</p></div>
+      <div class="p-6 bg-white rounded-xl shadow-md hover:shadow-xl transition" data-aos="fade-up"><h3 class="font-semibold text-lg mb-2">Łazienki</h3><p>Kompleksowe wykończenia łazienek — od płytek po armaturę.</p></div>
+      <div class="p-6 bg-white rounded-xl shadow-md hover:shadow-xl transition" data-aos="fade-up"><h3 class="font-semibold text-lg mb-2">Montaż kuchni</h3><p>Profesjonalny montaż mebli kuchennych i sprzętu AGD.</p></div>
+      <div class="p-6 bg-white rounded-xl shadow-md hover:shadow-xl transition" data-aos="fade-up"><h3 class="font-semibold text-lg mb-2">Układanie podłóg</h3><p>Panele, deski, parkiety – dokładny montaż z wykończeniem.</p></div>
+      <div class="p-6 bg-white rounded-xl shadow-md hover:shadow-xl transition" data-aos="fade-up"><h3 class="font-semibold text-lg mb-2">Budowa tarasów</h3><p>Nowoczesne i trwałe konstrukcje drewniane lub kompozytowe.</p></div>
+      <div class="p-6 bg-white rounded-xl shadow-md hover:shadow-xl transition" data-aos="fade-up"><h3 class="font-semibold text-lg mb-2">Montaż drzwi</h3><p>Dokładny montaż drzwi wewnętrznych i zewnętrznych.</p></div>
+      <div class="p-6 bg-white rounded-xl shadow-md hover:shadow-xl transition" data-aos="fade-up"><h3 class="font-semibold text-lg mb-2">Wykończenia wnętrz</h3><p>Kompleksowe realizacje pod klucz – od projektu do efektu.</p></div>
+      <div class="p-6 bg-white rounded-xl shadow-md hover:shadow-xl transition" data-aos="fade-up"><h3 class="font-semibold text-lg mb-2">Serwis budowlany</h3><p>Szybkie naprawy i prace serwisowe w domu i firmie.</p></div>
+    </div>
+  </section>
+
+<!-- GALERIA -->
+<section id="galeria" class="py-20 bg-gray-100">
+  <h2 class="text-3xl font-bold text-center mb-10 text-blue-700" data-aos="fade-up">Galeria Realizacji</h2>
+  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-6" id="galeria-grid">
+    <!-- Zdjęcia wstawiane przez JS -->
+  </div>
+  <div class="text-center mt-8">
+    <button id="load-more" 
+            class="bg-blue-700 text-white px-6 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-transform duration-200 ease-in-out transform hover:scale-105 active:scale-95 mr-2">
+      Pokaż więcej
+    </button>
+    <button id="collapse" 
+            class="bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 transition-transform duration-200 ease-in-out transform hover:scale-105 active:scale-95">
+      Zwiń
+    </button>
+  </div>
+</section>
+
+<script>
+  const gallery = document.getElementById('galeria-grid');
+  const loadMoreBtn = document.getElementById('load-more');
+  const collapseBtn = document.getElementById('collapse');
+
+  const firstNine = [27, 39, 40, 17, 20, 8, 12, 7, 34]; 
+  const totalImages = 40;
+  const imagesPerLoad = 9;
+  let loadedImages = 0;
+
+  function getExtension(num) {
+    return (num >= 11 && num <= 40) ? 'jfif' : 'PNG';
+  }
+
+  function createImageDiv(num) {
+    const div = document.createElement('div');
+    div.className = "overflow-hidden rounded-xl shadow-md transition-transform duration-300 hover:scale-105";
+    div.setAttribute("data-aos","zoom-in");
+    const ext = getExtension(num);
+    div.innerHTML = `<img src="zdjecia/${num}.${ext}" alt="Praca ${num}" class="w-full h-64 object-cover">`;
+    return div;
+  }
+
+  function loadInitial() {
+    gallery.innerHTML = '';
+    firstNine.forEach(num => gallery.appendChild(createImageDiv(num)));
+    loadedImages = firstNine.length;
+    loadMoreBtn.style.display = 'inline-block';
+  }
+
+  loadInitial();
+
+  const remainingImages = [];
+  for(let i=1; i<=totalImages; i++) {
+    if(!firstNine.includes(i)) remainingImages.push(i);
+  }
+
+  function loadMore() {
+    const next = remainingImages.splice(0, imagesPerLoad);
+    next.forEach(num => gallery.appendChild(createImageDiv(num)));
+    loadedImages += next.length;
+    if(remainingImages.length === 0){
+      loadMoreBtn.style.display = 'none';
+    }
+  }
+
+  function collapseGallery() {
+    loadInitial();
+    remainingImages.length = 0;
+    for(let i=1; i<=totalImages; i++){
+      if(!firstNine.includes(i)) remainingImages.push(i);
+    }
+  }
+
+  loadMoreBtn.addEventListener('click', loadMore);
+  collapseBtn.addEventListener('click', collapseGallery);
+</script>
+
+
+
+
+
+  <!-- KONTAKT -->
+  <section id="kontakt" class="py-20">
+    <h2 class="text-3xl font-bold text-center mb-10 text-blue-700" data-aos="fade-up">Kontakt</h2>
+    <div class="max-w-lg mx-auto text-center space-y-4" data-aos="fade-up">
+      <p class="text-lg">📧 <a href="mailto:arcibud@gmail.com" class="text-blue-600 hover:underline">arcibud@gmail.com</a></p>
+      <p class="text-lg">📞 <a href="tel:+48123456789" class="text-blue-600 hover:underline">+48 123 456 789</a></p>
+      <p class="text-gray-600 mt-6">Zadzwoń lub napisz — odpowiemy na wszystkie pytania!</p>
+    </div>
+  </section>
+
+  <!-- STOPKA -->
+  <footer class="bg-blue-700 text-white text-center py-4">
+    <p>&copy; 2025 Arcibud. Wszystkie prawa zastrzeżone.</p>
+  </footer>
+
+  <script>
+    AOS.init({
+      duration: 800,
+      once: true
+    });
+  </script>
+</body>
+</html>
