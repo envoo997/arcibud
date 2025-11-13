@@ -24,8 +24,6 @@
     </div>
   </nav>
 
-  
-
   <!-- HERO -->
   <section class="h-screen flex flex-col justify-center items-center bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80');">
     <div class="bg-black bg-opacity-50 p-8 rounded-lg text-center text-white" data-aos="fade-up">
@@ -51,85 +49,82 @@
     </div>
   </section>
 
-<!-- GALERIA -->
-<section id="galeria" class="py-20 bg-gray-100">
-  <h2 class="text-3xl font-bold text-center mb-10 text-blue-700" data-aos="fade-up">Galeria Realizacji</h2>
-  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-6" id="galeria-grid">
-    <!-- Zdjęcia wstawiane przez JS -->
-  </div>
-  <div class="text-center mt-8">
-    <button id="load-more" 
-            class="bg-blue-700 text-white px-6 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-transform duration-200 ease-in-out transform hover:scale-105 active:scale-95 mr-2">
-      Pokaż więcej
-    </button>
-    <button id="collapse" 
-            class="bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 transition-transform duration-200 ease-in-out transform hover:scale-105 active:scale-95">
-      Zwiń
-    </button>
-  </div>
-</section>
+  <!-- GALERIA -->
+  <section id="galeria" class="py-20 bg-gray-100">
+    <h2 class="text-3xl font-bold text-center mb-10 text-blue-700" data-aos="fade-up">Galeria Realizacji</h2>
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-6" id="galeria-grid"></div>
+    <div class="text-center mt-8">
+      <button id="load-more" 
+              class="bg-blue-700 text-white px-6 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-transform duration-200 ease-in-out transform hover:scale-105 active:scale-95 mr-2">
+        Pokaż więcej
+      </button>
+      <button id="collapse" 
+              class="bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 transition-transform duration-200 ease-in-out transform hover:scale-105 active:scale-95">
+        Zwiń
+      </button>
+    </div>
+  </section>
 
-<script>
-  const gallery = document.getElementById('galeria-grid');
-  const loadMoreBtn = document.getElementById('load-more');
-  const collapseBtn = document.getElementById('collapse');
+  <script>
+    const gallery = document.getElementById('galeria-grid');
+    const loadMoreBtn = document.getElementById('load-more');
+    const collapseBtn = document.getElementById('collapse');
 
-  const firstNine = [27, 39, 40, 17, 20, 8, 12, 7, 34]; 
-  const totalImages = 40;
-  const imagesPerLoad = 9;
-  let loadedImages = 0;
+    const firstNine = [27, 39, 40, 17, 20, 8, 12, 7, 34]; 
+    const totalImages = 40;
+    const imagesPerLoad = 9;
+    let loadedImages = 0;
 
-  function getExtension(num) {
-    return (num >= 11 && num <= 40) ? 'jfif' : 'PNG';
-  }
-
-  function createImageDiv(num) {
-    const div = document.createElement('div');
-    div.className = "overflow-hidden rounded-xl shadow-md transition-transform duration-300 hover:scale-105";
-    div.setAttribute("data-aos","zoom-in");
-    const ext = getExtension(num);
-    div.innerHTML = `<img src="zdjecia/${num}.${ext}" alt="Praca ${num}" class="w-full h-64 object-cover">`;
-    return div;
-  }
-
-  function loadInitial() {
-    gallery.innerHTML = '';
-    firstNine.forEach(num => gallery.appendChild(createImageDiv(num)));
-    loadedImages = firstNine.length;
-    loadMoreBtn.style.display = 'inline-block';
-  }
-
-  loadInitial();
-
-  const remainingImages = [];
-  for(let i=1; i<=totalImages; i++) {
-    if(!firstNine.includes(i)) remainingImages.push(i);
-  }
-
-  function loadMore() {
-    const next = remainingImages.splice(0, imagesPerLoad);
-    next.forEach(num => gallery.appendChild(createImageDiv(num)));
-    loadedImages += next.length;
-    if(remainingImages.length === 0){
-      loadMoreBtn.style.display = 'none';
+    // Tablica linków do zdjęć
+    const imageLinks = [];
+    for(let i=1;i<=10;i++){
+      imageLinks.push(`https://raw.githubusercontent.com/envoo997/arcibud/main/${i}.PNG`);
     }
-  }
+    for(let i=11;i<=40;i++){
+      imageLinks.push(`https://raw.githubusercontent.com/envoo997/arcibud/main/${i}.jfif`);
+    }
 
-  function collapseGallery() {
+    function createImageDiv(index) {
+      const div = document.createElement('div');
+      div.className = "overflow-hidden rounded-xl shadow-md transition-transform duration-300 hover:scale-105";
+      div.setAttribute("data-aos","zoom-in");
+      div.innerHTML = `<img src="${imageLinks[index]}" alt="Praca ${index+1}" class="w-full h-64 object-cover">`;
+      return div;
+    }
+
+    function loadInitial() {
+      gallery.innerHTML = '';
+      firstNine.forEach(num => gallery.appendChild(createImageDiv(num-1))); // -1 bo tablica od 0
+      loadedImages = firstNine.length;
+      loadMoreBtn.style.display = 'inline-block';
+    }
+
+    const remainingIndices = [];
+    for(let i=0;i<imageLinks.length;i++){
+      if(!firstNine.includes(i+1)) remainingIndices.push(i);
+    }
+
+    function loadMore() {
+      const next = remainingIndices.splice(0, imagesPerLoad);
+      next.forEach(i => gallery.appendChild(createImageDiv(i)));
+      loadedImages += next.length;
+      if (remainingIndices.length === 0) loadMoreBtn.style.display = 'none';
+    }
+
+    function collapseGallery() {
+      loadInitial();
+      remainingIndices.length = 0;
+      for(let i=0;i<imageLinks.length;i++){
+        if(!firstNine.includes(i+1)) remainingIndices.push(i);
+      }
+      loadMoreBtn.style.display = 'inline-block';
+    }
+
+    loadMoreBtn.addEventListener('click', loadMore);
+    collapseBtn.addEventListener('click', collapseGallery);
+
     loadInitial();
-    remainingImages.length = 0;
-    for(let i=1; i<=totalImages; i++){
-      if(!firstNine.includes(i)) remainingImages.push(i);
-    }
-  }
-
-  loadMoreBtn.addEventListener('click', loadMore);
-  collapseBtn.addEventListener('click', collapseGallery);
-</script>
-
-
-
-
+  </script>
 
   <!-- KONTAKT -->
   <section id="kontakt" class="py-20">
